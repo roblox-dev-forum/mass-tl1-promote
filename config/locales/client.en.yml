@@ -1,0 +1,9 @@
+en:
+  js:
+    mass_tl1_promote:
+      title: Mass TL1 Promo
+      label: Enter a list of usernames, separated by a new line, to promote to new member
+      promote: Promote
+      failure:
+        already_tl1: User is already at least a new member
+        doesnt_exist: User does not exist

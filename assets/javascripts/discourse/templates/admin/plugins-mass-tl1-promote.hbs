@@ -1,0 +1,22 @@
+<h2>{{i18n "mass_tl1_promote.label"}}</h2>
+{{textarea value=usernames}}<br>
+{{d-button
+  class="btn-default"
+  action=(action "promote")
+  actionParam=usernames
+  disabled=loading
+  label="mass_tl1_promote.promote"
+}}
+{{conditional-loading-spinner condition=loading}}
+
+<ul>
+  {{#each success as |username|}}
+    <li>{{d-icon "check"}} {{username}}</li>
+  {{/each}}
+</ul>
+
+<ul>
+  {{#each deny as |deny|}}
+    <li>{{d-icon "warning"}} {{deny.username}} - {{i18n (concat "mass_tl1_promote.failure." deny.why)}}</li>
+  {{/each}}
+</ul>

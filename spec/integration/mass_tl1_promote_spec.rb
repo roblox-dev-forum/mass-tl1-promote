@@ -23,10 +23,10 @@ describe ::MassTl1Promote::PromoController do
 
         body = JSON.parse(response.body)
         expect(body["success"]).to eq([tl_0.username])
-        expect(body["deny"]).to eq({
-          tl_2.username => "already_tl1",
-          "TheDogeGamerYT2008" => "doesnt_exist",
-        })
+        expect(body["deny"]).to eq([
+          { "username" => tl_2.username, "why" => "already_tl1" },
+          { "username" => "TheDogeGamerYT2008", "why" => "doesnt_exist" },
+      ])
 
         expect(tl_0.reload.trust_level).to eq(1)
         expect(tl_2.reload.trust_level).to eq(2) # don't demote

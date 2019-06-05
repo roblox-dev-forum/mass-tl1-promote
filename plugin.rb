@@ -43,6 +43,7 @@ after_initialize do
             })
           else
             user.change_trust_level!(1)
+            StaffActionLogger.new(current_user).log_trust_level_change(user, 0, 1)
             response[:success].push(username)
           end
         else

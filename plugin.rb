@@ -1,6 +1,6 @@
 # name: mass-tl1-promote
-# version: 1.0.0
-# authors: boyned/Kampfkarren
+# version: 1.1.0
+# authors: boyned/Kampfkarren, buildthomas
 
 enabled_site_setting :mass_tl1_promote_enabled
 
@@ -36,10 +36,17 @@ after_initialize do
       (params["usernames"] || []).each do |username|
         user = User.find_by_username(username)
         if user
-          if user.trust_level >= 1
+          fail_reason = nil
+          fail_reason ||= "already_tl1" if user.trust_level >= 1
+          fail_reason ||= "locked_tl" if !user.manual_locked_trust_level.nil?
+          fail_reason ||= "suspended" if user.suspended?
+          fail_reason ||= "silenced" if user.silenced?
+          fail_reason ||= "unactivated" if !user.active
+
+          if fail_reason
             response[:deny].push({
               username: username,
-              why: "already_tl1",
+              why: fail_reason,
             })
           else
             user.change_trust_level!(1)

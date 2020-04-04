@@ -2,8 +2,12 @@ en:
   js:
     mass_tl1_promote:
       title: Mass TL1 Promo
-      label: Enter a list of usernames, separated by a new line, to promote to new member
+      label: Enter a list of usernames, separated by a new line, to promote to trust level 1
       promote: Promote
       failure:
-        already_tl1: User is already at least a new member
+        already_tl1: User is already at least trust level 1
         doesnt_exist: User does not exist
+        locked_tl: User has locked trust level
+        suspended: User is suspended
+        silenced: User is silenced
+        unactivated: User is not activated

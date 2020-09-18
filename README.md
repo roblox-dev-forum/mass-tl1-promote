@@ -45,3 +45,5 @@ No manual maintenance needed.
 A rails engine is defined to create new endpoints that can be used by the plugin. Standard functionality is used to route the endpoints to the right methods in the engine. The rails engine is constrained to only accept requests sent from forum sessions by an admin user.
 
 The standard recommended functionality is used to add the widget for this plugin to the admin panel for plugins.
+
+#### Copyright 2020 Roblox Corporation
